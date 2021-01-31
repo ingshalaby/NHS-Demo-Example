@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>NHS</title>
+</head>
+<body>
+
+
+<div class="container">
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-xs-4 col-md-offset-4">
+
+  <!--          <div class="alert alert-danger" th:if="${param.error}">Invalid username and password.</div>
+            <div class="alert alert-danger" th:if="${param.logout}">You have been logged out.</div>-->
+            <h2><span th:if="${showError}" style="color: #ff0000">Please Enter the Correct Amount </span></h2>
+
+            <form class="form-signin" th:action="@{/index}" method="post">
+                <br /> <br />
+                <h2>Please Enter Your Details</h2>
+                <br />
+
+                <div class="form-group">
+                    <label for="frequency" class="sr-only">Frequency</label>
+                    <select name="frequency" id="frequency" class="form-control">
+                        <option th:each="frequencyOpt : ${T(com.example.demo.model.Frequency).values()}" th:value="${frequencyOpt}" th:text="${frequencyOpt}"></option>
+                    </select>
+                </div>
+
+                <br/>
+
+                <div class="form-group">
+                    <label for="amount" class="sr-only">Amount</label>
+                    <input
+                        type="amount" class="form-control" placeholder="0.00"
+                        name="amount" id="amount" />
+                </div>
+                <br/>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
